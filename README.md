@@ -12,7 +12,7 @@ Deploy Nextcloud on minikube or any other Kubernetes clusters. Uses ngrok to mak
 
 # Deployment
 
-```
+```yaml
 #Create kubernetes deployments and services
 
 kubectl create -f mariadb-deployment.yml, mariadb-service.yml, nextcloud-deployment.yml, nextcloud-service.yml, ngrok-deployment.yml, ngrok-service.yml, redis-deployment.yml, redis-service.yml
