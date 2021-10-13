@@ -2,7 +2,7 @@
 
 Deploy Nextcloud on minikube or any other Kubernetes clusters. Uses ngrok to make the Nextcloud instance accessible externally.
 
-# Setup and Prerequisites
+## Setup and Prerequisites
 
 * Login to [Ngrok](https://ngrok.com/) and create a free account and copy your authtoken. Subscription required if you want static URLs.
 * Replace <NGROK_AUTHTOKEN> with your token on ngrok-deployment.yaml
@@ -10,7 +10,7 @@ Deploy Nextcloud on minikube or any other Kubernetes clusters. Uses ngrok to mak
   * <MYSQL_ROOT_PASSWORD>
   * <NEXTCLOUD_ADMIN_PASSWORD>
 
-# Deployment
+## Deployment
 
 ```bash
 #Create kubernetes deployments and services
