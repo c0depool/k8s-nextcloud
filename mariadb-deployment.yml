@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    service.name: mariadb
+  name: mariadb
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      service.name: mariadb
+  strategy:
+    type: Recreate
+  template:
+      labels:
+        service.name: mariadb
+    spec:
+      containers:
+        - env:
+            - name: MYSQL_ROOT_PASSWORD
+              value: <MYSQL_ROOT_PASSWORD>
+            - name: PGID
+              value: "1000"
+            - name: PUID
+              value: "1000"
+          image: mariadb
+          name: mariadb
+          args: ["--transaction-isolation=READ-COMMITTED", "--binlog-format=ROW", "--skip-innodb-read-only-compressed"]
+          ports:
+            - containerPort: 3306
+          resources: {}
+          volumeMounts:
+            - mountPath: /var/lib/mysql
+              name: mariadb-config
+      restartPolicy: Always
+      volumes:
+        - name: mariadb-config
+          hostPath:
+            path: /apps/docker/mariadb/config
+            type: DirectoryOrCreate
